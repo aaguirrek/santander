@@ -1,0 +1,232 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-19 23:01:57.288639",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "documento_dni",
+  "contrato_de_credito_vehicular",
+  "hoja_resumen",
+  "cronograma_vehicular",
+  "naming_series",
+  "column_break_mbkk",
+  "cargar_dni_reverso",
+  "solicitud_de_credito",
+  "solicitud_de_instalacion_de_gps",
+  "seguro_de_desgravamen",
+  "column_break_vozv",
+  "cotizacion_seguro_vehicular",
+  "carta_autorizacion_desembolso",
+  "proteccion_de_datos_personales",
+  "declaracion_uso_de_vehiculo",
+  "column_break_etnq",
+  "carta_beneficios_repsol",
+  "pagare_credito_vehicular",
+  "formato_edpyme",
+  "fichar_ruc",
+  "vigencia_de_poder",
+  "section_break_nywz",
+  "nombre",
+  "dni",
+  "correo_cliente",
+  "column_break_osvx",
+  "apellido_paterno",
+  "telefono",
+  "prueba_de_vida",
+  "column_break_kdmh",
+  "apellido_materno",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "dni",
+   "fieldtype": "Data",
+   "label": "DNI"
+  },
+  {
+   "fieldname": "contrato_de_credito_vehicular",
+   "fieldtype": "Attach",
+   "label": "Contrato de Credito Vehicular"
+  },
+  {
+   "fieldname": "hoja_resumen",
+   "fieldtype": "Attach",
+   "label": "Hoja Resumen"
+  },
+  {
+   "fieldname": "cronograma_vehicular",
+   "fieldtype": "Attach",
+   "label": "Cronograma Vehicular"
+  },
+  {
+   "fieldname": "pagare_credito_vehicular",
+   "fieldtype": "Attach",
+   "label": "Pagare Credito Vehicular"
+  },
+  {
+   "fieldname": "solicitud_de_credito",
+   "fieldtype": "Attach",
+   "label": "Solicitud de Credito"
+  },
+  {
+   "fieldname": "solicitud_de_instalacion_de_gps",
+   "fieldtype": "Attach",
+   "label": "Solicitud de instalacion de GPS"
+  },
+  {
+   "fieldname": "seguro_de_desgravamen",
+   "fieldtype": "Attach",
+   "label": "Seguro de Desgravamen"
+  },
+  {
+   "fieldname": "cotizacion_seguro_vehicular",
+   "fieldtype": "Attach",
+   "label": "Cotizacion Seguro Vehicular"
+  },
+  {
+   "fieldname": "carta_autorizacion_desembolso",
+   "fieldtype": "Attach",
+   "label": "Carta Autorizacion Desembolso"
+  },
+  {
+   "fieldname": "proteccion_de_datos_personales",
+   "fieldtype": "Attach",
+   "label": "Proteccion de datos personales"
+  },
+  {
+   "fieldname": "declaracion_uso_de_vehiculo",
+   "fieldtype": "Attach",
+   "label": "Declaracion uso de vehiculo"
+  },
+  {
+   "fieldname": "carta_beneficios_repsol",
+   "fieldtype": "Attach",
+   "label": "carta beneficios repsol"
+  },
+  {
+   "fieldname": "formato_edpyme",
+   "fieldtype": "Attach",
+   "label": "formato EDPYME"
+  },
+  {
+   "fieldname": "documento_dni",
+   "fieldtype": "Attach",
+   "label": "Documento DNI"
+  },
+  {
+   "fieldname": "section_break_nywz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "nombre",
+   "fieldtype": "Data",
+   "label": "Nombre"
+  },
+  {
+   "fieldname": "apellido_paterno",
+   "fieldtype": "Data",
+   "label": "Apellido Paterno"
+  },
+  {
+   "fieldname": "apellido_materno",
+   "fieldtype": "Data",
+   "label": "Apellido Materno"
+  },
+  {
+   "default": "SC-DCV-.YYYY.-.MM.-.#######",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "SC-DCV-.YYYY.-.MM.-.#######"
+  },
+  {
+   "fieldname": "prueba_de_vida",
+   "fieldtype": "Data",
+   "label": "prueba_de_vida"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Santander Documentos Credito Vehicular",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "telefono",
+   "fieldtype": "Data",
+   "label": "telefono"
+  },
+  {
+   "fieldname": "correo_cliente",
+   "fieldtype": "Data",
+   "label": "Correo Cliente"
+  },
+  {
+   "fieldname": "column_break_mbkk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cargar_dni_reverso",
+   "fieldtype": "Attach",
+   "label": "DNI Reverso"
+  },
+  {
+   "fieldname": "column_break_vozv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_etnq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fichar_ruc",
+   "fieldtype": "Attach",
+   "label": "Ficha ruc"
+  },
+  {
+   "fieldname": "vigencia_de_poder",
+   "fieldtype": "Attach",
+   "label": "Vigenia de poder"
+  },
+  {
+   "fieldname": "column_break_osvx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kdmh",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-23 14:25:08.033027",
+ "modified_by": "Administrator",
+ "module": "Santander",
+ "name": "Santander Documentos Credito Vehicular",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
