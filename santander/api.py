@@ -8,6 +8,7 @@ from pydub import AudioSegment
 @frappe.whitelist(allow_guest=False)
 def solicitud_cert(name):
 	doc = frappe.get_doc("Santander Documentos Credito Vehicular",name)
+	docjson  = frappe.get_doc("Santander Documentos Credito Vehicular",name).as_dict()
 	url = "https://api.qa.iofesign.com/api/v1/outside/createrequest/onesign"
 
 	payload = {'typePersonId': '1',
@@ -43,7 +44,27 @@ def solicitud_cert(name):
 	with open(back_uri, 'rb') as image_file:
 		base64_bytes = base64.b64encode(image_file.read())
 		back_b64 = base64_bytes.decode()
-		
+
+
+	filesJson=[]
+	filesJson=addtofiles(filesJson, docjson,"hoja_resumen")
+	filesJson=addtofiles(filesJson, docjson,"cotizacion_seguro_vehicular")
+	filesJson=addtofiles(filesJson, docjson,"carta_beneficios_repsol")
+	filesJson=addtofiles(filesJson, docjson,"contrato_de_credito_vehicular")
+	filesJson=addtofiles(filesJson, docjson,"solicitud_de_credito")
+	filesJson=addtofiles(filesJson, docjson,"pagare_credito_vehicular")
+	filesJson=addtofiles(filesJson, docjson,"carta_beneficios_repsol")
+	filesJson=addtofiles(filesJson, docjson,"hoja_resumen")
+	filesJson=addtofiles(filesJson, docjson,"solicitud_de_instalacion_de_gps")
+	filesJson=addtofiles(filesJson, docjson,"proteccion_de_datos_personales")
+	filesJson=addtofiles(filesJson, docjson,"formato_edpyme")
+	filesJson=addtofiles(filesJson, docjson,"cronograma_vehicular")
+	filesJson=addtofiles(filesJson, docjson,"seguro_de_desgravamen")
+	filesJson=addtofiles(filesJson, docjson,"declaracion_uso_de_vehiculo")
+	filesJson=addtofiles(filesJson, docjson,"fichar_ruc")
+	filesJson=addtofiles(filesJson, docjson,"vigencia_de_poder")
+	
+	
 	url = "https://api.qa.iofesign.com/api/v1/outside/documents"
 
 	payload = json.dumps({
@@ -73,23 +94,38 @@ def solicitud_cert(name):
 		"orderParticipant": 1
 		}
 	],
-	"files": [
-		{
-		"name": "hoja_resumen.pdf",
-		"base64": atob(doc.hoja_resumen)
-		}
-	]
+	"files":filesJson
 	})
 	headers = {
 			'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlZXh0ZXJubzciLCJpYXQiOjE3MTY0ODMyNDQsImV4cCI6MTcxNzM0NzI0NH0.R9grZBL4TmbJzyvYAixsndj9yFFLJjvc24ntfN2ZHIyySmfOPyo8FRgfFp61Gtz8jXfoSWYs6CoaGpSCdQHM8Q',
 			'Content-Type': 'application/json'
 	}
-
+	
+	doc.request_id= str(response["requestId"])
 	response = requests.request("POST", url, headers=headers, data=payload)
-	doc.docstatus=1
 	doc.save()
 	return response.json()
 
+@frappe.whitelist(allow_guest=True)
+def wh(id, subject,verificationcode,urlfile,filename,code):
+	frappe.set_user("Administrator")
+	doc = frappe.get_last_doc(doctype="Santander Documentos Credito Vehicular", filters=["request_id","=",id])
+	doc.subject =subject
+	doc.verificationcode =verificationcode
+	doc.urlfile =urlfile
+	doc.filename =filename
+	doc.code =code
+	doc.docstatus=1
+	doc.save()
+	return "save"
+
+def addtofiles(arr=[],doc=None,name=""):
+	if doc["check_"+name]==1:
+		arr.append({
+		"name": doc[name].replace("/files/",""),
+		"base64": atob(doc[name])
+		})
+	return arr
 
 def filename(name):
 	return name.replace("/files/","")

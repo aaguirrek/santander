@@ -6,27 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "documento_dni",
-  "contrato_de_credito_vehicular",
-  "hoja_resumen",
-  "cronograma_vehicular",
-  "naming_series",
-  "column_break_mbkk",
-  "cargar_dni_reverso",
-  "solicitud_de_credito",
-  "solicitud_de_instalacion_de_gps",
-  "seguro_de_desgravamen",
-  "column_break_vozv",
-  "cotizacion_seguro_vehicular",
-  "carta_autorizacion_desembolso",
-  "proteccion_de_datos_personales",
-  "declaracion_uso_de_vehiculo",
-  "column_break_etnq",
-  "carta_beneficios_repsol",
-  "pagare_credito_vehicular",
-  "formato_edpyme",
-  "fichar_ruc",
-  "vigencia_de_poder",
+  "persona_tab",
   "section_break_nywz",
   "nombre",
   "dni",
@@ -37,7 +17,54 @@
   "prueba_de_vida",
   "column_break_kdmh",
   "apellido_materno",
-  "amended_from"
+  "amended_from",
+  "detalles_tab",
+  "documento_dni",
+  "check_documento_dni",
+  "contrato_de_credito_vehicular",
+  "check_contrato_de_credito_vehicular",
+  "hoja_resumen",
+  "check_hoja_resumen",
+  "cronograma_vehicular",
+  "check_cronograma_vehicular",
+  "naming_series",
+  "column_break_mbkk",
+  "cargar_dni_reverso",
+  "check_dni_reverso",
+  "solicitud_de_credito",
+  "check_solicitud_de_credito",
+  "solicitud_de_instalacion_de_gps",
+  "check_solicitud_de_instalacion_de_gps",
+  "seguro_de_desgravamen",
+  "check_seguro_de_desgravamen",
+  "column_break_vozv",
+  "cotizacion_seguro_vehicular",
+  "check_cotizacion_seguro_vehicular",
+  "carta_autorizacion_desembolso",
+  "check_carta_autorizacion_desembolso",
+  "proteccion_de_datos_personales",
+  "check_proteccion_de_datos_personales",
+  "declaracion_uso_de_vehiculo",
+  "check_declaracion_uso_de_vehiculo",
+  "column_break_etnq",
+  "carta_beneficios_repsol",
+  "check_carta_beneficios_repsol",
+  "pagare_credito_vehicular",
+  "check_pagare_credito_vehicular",
+  "formato_edpyme",
+  "check_formato_edpyme",
+  "fichar_ruc",
+  "check_fichar_ruc",
+  "vigencia_de_poder",
+  "check_vigencia_de_poder",
+  "tab_3_tab",
+  "request_id",
+  "verificationcode",
+  "filename",
+  "column_break_voxk",
+  "subject",
+  "urlfile",
+  "code"
  ],
  "fields": [
   {
@@ -111,9 +138,10 @@
    "label": "formato EDPYME"
   },
   {
+   "depends_on": "eval:doc.check_documento_dni==1",
    "fieldname": "documento_dni",
    "fieldtype": "Attach",
-   "label": "Documento DNI"
+   "label": "Frontal DNI"
   },
   {
    "fieldname": "section_break_nywz",
@@ -172,6 +200,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.check_dni_reverso==1",
    "fieldname": "cargar_dni_reverso",
    "fieldtype": "Attach",
    "label": "DNI Reverso"
@@ -201,12 +230,170 @@
   {
    "fieldname": "column_break_kdmh",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_documento_dni",
+   "fieldtype": "Check",
+   "label": "Frontal DNI"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_hoja_resumen",
+   "fieldtype": "Check",
+   "label": "Hoja Resumen"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_dni_reverso",
+   "fieldtype": "Check",
+   "label": "DNI Reverso"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_contrato_de_credito_vehicular",
+   "fieldtype": "Check",
+   "label": "Contrato de Credito Vehicular"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_solicitud_de_credito",
+   "fieldtype": "Check",
+   "label": "Solicitud de Credito"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_carta_autorizacion_desembolso",
+   "fieldtype": "Check",
+   "label": "Carta Autorizacion Desembolso"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_pagare_credito_vehicular",
+   "fieldtype": "Check",
+   "label": "Pagare Credito Vehicular"
+  },
+  {
+   "fieldname": "persona_tab",
+   "fieldtype": "Tab Break",
+   "label": "Persona"
+  },
+  {
+   "fieldname": "detalles_tab",
+   "fieldtype": "Tab Break",
+   "label": "Detalles"
+  },
+  {
+   "fieldname": "tab_3_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verificacion"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "request_id",
+   "fieldtype": "Data",
+   "label": "Request Id"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "verificationcode",
+   "fieldtype": "Data",
+   "label": "verificationcode"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "filename",
+   "fieldtype": "Data",
+   "label": "filename"
+  },
+  {
+   "fieldname": "column_break_voxk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "subject"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "urlfile",
+   "fieldtype": "Data",
+   "label": "urlfile",
+   "length": 245
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "code"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_solicitud_de_instalacion_de_gps",
+   "fieldtype": "Check",
+   "label": "Solicitud de instalacion de GPS"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_proteccion_de_datos_personales",
+   "fieldtype": "Check",
+   "label": "Proteccion de datos personales"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_fichar_ruc",
+   "fieldtype": "Check",
+   "label": "Ficha ruc"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_cronograma_vehicular",
+   "fieldtype": "Check",
+   "label": "Cronograma Vehicular"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_seguro_de_desgravamen",
+   "fieldtype": "Check",
+   "label": "Seguro de Desgravamen"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_declaracion_uso_de_vehiculo",
+   "fieldtype": "Check",
+   "label": "Declaracion uso de vehiculo"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_vigencia_de_poder",
+   "fieldtype": "Check",
+   "label": "Vigenia de poder"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_cotizacion_seguro_vehicular",
+   "fieldtype": "Check",
+   "label": "Cotizacion Seguro Vehicular"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_carta_beneficios_repsol",
+   "fieldtype": "Check",
+   "label": "carta beneficios repsol"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_formato_edpyme",
+   "fieldtype": "Check",
+   "label": "formato EDPYME"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-23 14:25:08.033027",
+ "modified": "2024-05-24 14:28:21.521384",
  "modified_by": "Administrator",
  "module": "Santander",
  "name": "Santander Documentos Credito Vehicular",
